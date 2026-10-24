@@ -1,5 +1,9 @@
 # OpenHUTB YOLO 与 MLP 八字轨迹控制
 
+在原有感知与八字控制基础上，可独立运行
+[YOLO 目标水平视觉居中](yolo_visual_centering.md)。该模式使用检测框修正横向运动，
+默认预览控制量，不提供目标距离保持或避障。
+
 本文介绍一个基于 ROS 2 的 OpenHUTB 无人机感知与轨迹控制示例。系统通过 ROS 2 节点封装 OpenHUTB/AirSim RPC 接口，使用 YOLO11n 对模拟器 RGB 图像进行实时目标检测，并使用 MLP 控制器跟踪八字形轨迹。
 
 本示例将**模拟器接口、视觉感知、轨迹生成和飞行控制解耦**。除 `airsim_bridge` 外，其余节点不直接调用 AirSim API，而是通过标准 ROS 2 消息交换数据，便于后续替换检测器、控制器或轨迹规划算法。
