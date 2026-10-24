@@ -7,7 +7,7 @@ from openhutb_yolo_mlp_control.visual_centering import (
 )
 
 
-def box(x=480, y=240, label='person', score=0.9):
+def box(x=480, y=240, label='car', score=0.9):
     return Box(x, y, 80, 100, score, label)
 
 
@@ -64,7 +64,7 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(c.step(0.1)[0], (0, 0, 0))
 
     def test_invalid_detection_filtered(self):
-        for b in (box(label='car'), box(score=0.1), box(float('nan')),
+        for b in (box(label='person'), box(score=0.1), box(float('nan')),
                   box(score=float('inf')), box(-10)):
             c = self.ready()
             c.update_detections([b], 640, 480, 0.1)

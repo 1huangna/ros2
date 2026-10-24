@@ -18,7 +18,7 @@ class Box:
 
 @dataclass(frozen=True)
 class Settings:
-    target_class: str = 'person'
+    target_class: str = 'car'
     confidence: float = 0.5
     gain: float = 0.6
     deadband: float = 0.08
